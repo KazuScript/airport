@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flight extends Model
 {
-     use HasFactory;
+    use HasFactory;
 
     protected $fillable = [
         'airline_id',
@@ -17,8 +17,14 @@ class Flight extends Model
         'departure_time',
         'arrival_time',
         'duration_minutes',
+        'price',
         'status',
         'capacity',
+    ];
+
+    protected $casts = [
+        'departure_time' => 'datetime',
+        'arrival_time'   => 'datetime',
     ];
 
     public function airline()
