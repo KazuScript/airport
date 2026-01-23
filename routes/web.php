@@ -16,4 +16,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
+Route::get('/flights', function () {
+    return Inertia::render('Flights/Index');
+});
+
+Route::get('/booking/{code}', function ($code) {
+    return Inertia::render('Booking/Show', [
+        'code' => $code,
+    ]);
+});
+
 require __DIR__.'/settings.php';
