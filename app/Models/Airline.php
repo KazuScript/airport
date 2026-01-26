@@ -11,9 +11,8 @@ class Airline extends Model
 
     protected $fillable = [
         'name',
-        'code',
-        'baggage_policy',
-        'capacity',
+        'iata_code',
+        'country'
     ];
 
     public function flights()
