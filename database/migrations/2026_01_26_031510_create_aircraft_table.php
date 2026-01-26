@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('airlines', function (Blueprint $table) {
+        Schema::create('aircraft', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->string('iata_code', 5)->unique();
-            $table->string('website_url')->nullable();
-            $table->string('logo_path')->nullable();
-            $table->string('country');
+            $table->foreignId('airline_id')->constrained()->cascadeOnDelete();
+            $table->string('model');
+            $table->integer('capacity');
+            $table->string('registration_code')->unique();
+            $table->integer('range_km')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('airlines');
+        Schema::dropIfExists('aircraft');
     }
 };

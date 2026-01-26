@@ -11,8 +11,12 @@ class Airline extends Model
 
     protected $fillable = [
         'name',
+        'description',
         'iata_code',
-        'country'
+        'website_url',
+        'logo_path',
+        'country',
+        'active'
     ];
 
     public function flights()

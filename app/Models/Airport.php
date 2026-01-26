@@ -11,9 +11,10 @@ class Airport extends Model
 
     protected $fillable = [
         'name',
-        'code',
+        'iata_code',
         'city',
         'country',
+        'timezone'
     ];
 
     public function departures()

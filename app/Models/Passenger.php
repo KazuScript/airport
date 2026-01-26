@@ -7,15 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Passenger extends Model
 {
     protected $fillable = [
-        'booking_id',
-        'first_name',
-        'last_name',
+        'full_name',
         'document_number',
-        'seat',
+        'nationality',
+        'flight_id'
     ];
 
-    public function booking()
+    public function flight()
     {
-        return $this->belongsTo(Booking::class);
+        return $this->belongsTo(Flight::class);
+    }
+
+    public function baggage()
+    {
+        return $this->hasMany(Baggage::class);
     }
 }

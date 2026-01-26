@@ -22,16 +22,16 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-  /*       User::factory()->create([
+        /*       User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]); */
 
         $this->call([
-            AirlineSeeder::class,
             AirportSeeder::class,
+            AirlineSeeder::class,
+            AircraftSeeder::class,
             FlightSeeder::class,
-            BookingSeeder::class,
             PassengerSeeder::class,
             BaggageSeeder::class,
         ]);

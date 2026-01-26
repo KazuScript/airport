@@ -12,12 +12,12 @@ class PassengerSeeder extends Seeder
      */
     public function run(): void
     {
-        Passenger::create([
-            'booking_id' => 1,
-            'first_name' => 'Juan',
-            'last_name' => 'Pérez',
-            'document_number' => '12345678',
-            'seat' => '12A',
+        Passenger::insert([
+            ['full_name' => 'Juan Perez', 'document_number' => 'CL123456', 'nationality' => 'Chile', 'flight_id' => 1],
+            ['full_name' => 'Maria Lopez', 'document_number' => 'PE654321', 'nationality' => 'Perú', 'flight_id' => 1],
+            ['full_name' => 'Carlos Ruiz', 'document_number' => 'CO987654', 'nationality' => 'Colombia', 'flight_id' => 2],
+            ['full_name' => 'Ana Gomez', 'document_number' => 'ES456789', 'nationality' => 'España', 'flight_id' => 3],
+            ['full_name' => 'Luis Martinez', 'document_number' => 'AR111222', 'nationality' => 'Argentina', 'flight_id' => 4]
         ]);
     }
 }

@@ -12,11 +12,12 @@ class BaggageSeeder extends Seeder
      */
     public function run(): void
     {
-        Baggage::create([
-            'booking_id' => 1,
-            'quantity' => 1,
-            'weight_estimated' => 20,
-            'extra_cost' => 0,
+        Baggage::insert([
+            ['passenger_id' => 1, 'flight_id' => 1, 'type' => 'checked', 'weight' => 20, 'status' => 'loaded'],
+            ['passenger_id' => 2, 'flight_id' => 1, 'type' => 'hand', 'weight' => 8, 'status' => 'checked'],
+            ['passenger_id' => 3, 'flight_id' => 2, 'type' => 'checked', 'weight' => 23, 'status' => 'loaded'],
+            ['passenger_id' => 4, 'flight_id' => 3, 'type' => 'checked', 'weight' => 18, 'status' => 'delivered'],
+            ['passenger_id' => 5, 'flight_id' => 4, 'type' => 'hand', 'weight' => 7, 'status' => 'checked']
         ]);
     }
 }

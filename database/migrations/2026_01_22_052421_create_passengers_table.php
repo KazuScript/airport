@@ -13,14 +13,10 @@ return new class extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignId('booking_id')->constrained()->cascadeOnDelete();
-
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('full_name');
             $table->string('document_number');
-            $table->string('seat')->nullable();
-
+            $table->string('nationality');
+            $table->foreignId('flight_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

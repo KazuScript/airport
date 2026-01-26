@@ -2,29 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Flight extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
+        'flight_number',
         'airline_id',
+        'aircraft_id',
         'origin_airport_id',
         'destination_airport_id',
-        'flight_number',
         'departure_time',
         'arrival_time',
-        'duration_minutes',
-        'price',
+        'gate',
         'status',
-        'capacity',
-    ];
-
-    protected $casts = [
-        'departure_time' => 'datetime',
-        'arrival_time'   => 'datetime',
+        'control_notes'
     ];
 
     public function airline()
@@ -32,18 +24,28 @@ class Flight extends Model
         return $this->belongsTo(Airline::class);
     }
 
-    public function origin()
+    public function aircraft()
+    {
+        return $this->belongsTo(Aircraft::class);
+    }
+
+    public function originAirport()
     {
         return $this->belongsTo(Airport::class, 'origin_airport_id');
     }
 
-    public function destination()
+    public function destinationAirport()
     {
         return $this->belongsTo(Airport::class, 'destination_airport_id');
     }
 
-    public function bookings()
+    public function passengers()
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(Passenger::class);
+    }
+
+    public function baggage()
+    {
+        return $this->hasMany(Baggage::class);
     }
 }

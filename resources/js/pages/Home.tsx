@@ -33,20 +33,21 @@ export default function Home() {
         >
           <section className="search-section">
             <FlightSearchForm />
+            <h3>panel de estado del vuelo</h3>
           </section>
         </Banner>
       </section>
-
       <section>
-        {/* <h1>{t.home.title}</h1>
-        <p>{t.home.subtitle}</p> */}
-        <h3>estado del vuelo</h3>
+        <h3>estacionamientos</h3>
       </section>
       <section>
-        <h3>Ofertas</h3>
+        transporte Oficiales
       </section>
       <section>
-        about us
+        tiendas y restaurantes
+      </section>
+      <section>
+        servicios
       </section>
 
 

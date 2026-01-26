@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('airports', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('code', 10)->unique();
+            $table->string('iata_code', 5)->unique();
             $table->string('city');
             $table->string('country');
+            $table->string('timezone')->nullable();
             $table->timestamps();
         });
     }

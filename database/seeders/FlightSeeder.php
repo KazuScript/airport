@@ -16,42 +16,62 @@ class FlightSeeder extends Seeder
      */
     public function run(): void
     {
-        $latam = Airline::where('code', 'LA')->first();
-        $sky   = Airline::where('code', 'SKY')->first();
-
-        $scl = Airport::where('code', 'SCL')->first();
-        $lim = Airport::where('code', 'LIM')->first();
-        $eze = Airport::where('code', 'EZE')->first();
-
         Flight::insert([
             [
-                'airline_id' => $latam->id,
-                'origin_airport_id' => $scl->id,
-                'destination_airport_id' => $lim->id,
-                'flight_number' => 'LA245',
-                'departure_time' => Carbon::now()->addDays(1)->setTime(8, 30),
-                'arrival_time' => Carbon::now()->addDays(1)->setTime(12, 0),
-                'duration_minutes' => 210,
-                'price' => 150000,
-                'status' => 'scheduled',
-                'capacity' => 180,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'flight_number' => 'LA100',
+                'airline_id' => 1,
+                'aircraft_id' => 1,
+                'origin_airport_id' => 1,
+                'destination_airport_id' => 2,
+                'departure_time' => now()->addHours(2),
+                'arrival_time' => now()->addHours(5),
+                'gate' => 'A1',
+                'status' => 'scheduled'
             ],
             [
-                'airline_id' => $sky->id,
-                'origin_airport_id' => $scl->id,
-                'destination_airport_id' => $eze->id,
-                'flight_number' => 'SK512',
-                'departure_time' => Carbon::now()->addDays(2)->setTime(15, 0),
-                'arrival_time' => Carbon::now()->addDays(2)->setTime(17, 30),
-                'duration_minutes' => 150,
-                'price' => 200000,
-                'status' => 'scheduled',
-                'capacity' => 186,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'flight_number' => 'H2200',
+                'airline_id' => 2,
+                'aircraft_id' => 2,
+                'origin_airport_id' => 1,
+                'destination_airport_id' => 3,
+                'departure_time' => now()->addHours(3),
+                'arrival_time' => now()->addHours(7),
+                'gate' => 'B3',
+                'status' => 'boarding'
             ],
+            [
+                'flight_number' => 'AV450',
+                'airline_id' => 3,
+                'aircraft_id' => 3,
+                'origin_airport_id' => 3,
+                'destination_airport_id' => 5,
+                'departure_time' => now()->addHours(5),
+                'arrival_time' => now()->addHours(12),
+                'gate' => 'C2',
+                'status' => 'delayed'
+            ],
+            [
+                'flight_number' => 'IB900',
+                'airline_id' => 4,
+                'aircraft_id' => 4,
+                'origin_airport_id' => 5,
+                'destination_airport_id' => 1,
+                'departure_time' => now()->addHours(6),
+                'arrival_time' => now()->addHours(14),
+                'gate' => 'D5',
+                'status' => 'scheduled'
+            ],
+            [
+                'flight_number' => 'AR700',
+                'airline_id' => 5,
+                'aircraft_id' => 5,
+                'origin_airport_id' => 4,
+                'destination_airport_id' => 1,
+                'departure_time' => now()->addHours(1),
+                'arrival_time' => now()->addHours(4),
+                'gate' => 'A4',
+                'status' => 'departed'
+            ]
         ]);
     }
 }

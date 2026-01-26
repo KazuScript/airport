@@ -13,27 +13,23 @@ return new class extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
-            
-            $table->foreignId('airline_id')
-                ->constrained()
-                ->cascadeOnDelete();
-
-            $table->foreignId('origin_airport_id')
-                ->constrained('airports')
-                ->cascadeOnDelete();
-
-            $table->foreignId('destination_airport_id')
-                ->constrained('airports')
-                ->cascadeOnDelete();
-
             $table->string('flight_number');
+            $table->foreignId('airline_id')->constrained();
+            $table->foreignId('aircraft_id')->constrained();
+            $table->foreignId('origin_airport_id')->constrained('airports');
+            $table->foreignId('destination_airport_id')->constrained('airports');
             $table->dateTime('departure_time');
             $table->dateTime('arrival_time');
-            $table->integer('duration_minutes');
-
-            $table->string('status')->default('scheduled');
-            $table->integer('capacity');
-
+            $table->string('gate')->nullable();
+            $table->enum('status', [
+                'scheduled',
+                'boarding',
+                'delayed',
+                'departed',
+                'arrived',
+                'canceled'
+            ])->default('scheduled');
+            $table->text('control_notes')->nullable();
             $table->timestamps();
         });
     }

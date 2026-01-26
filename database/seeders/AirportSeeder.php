@@ -15,45 +15,40 @@ class AirportSeeder extends Seeder
     {
         Airport::insert([
             [
-                'name' => 'Aeropuerto Internacional Arturo Merino Benítez',
-                'code' => 'SCL',
+                'name' => 'Aeropuerto Arturo Merino Benítez',
+                'iata_code' => 'SCL',
                 'city' => 'Santiago',
                 'country' => 'Chile',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'timezone' => 'America/Santiago'
             ],
             [
-                'name' => 'Aeropuerto Internacional Ezeiza',
-                'code' => 'EZE',
-                'city' => 'Buenos Aires',
-                'country' => 'Argentina',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'Aeropuerto Internacional Jorge Chávez',
-                'code' => 'LIM',
+                'name' => 'Aeropuerto Jorge Chávez',
+                'iata_code' => 'LIM',
                 'city' => 'Lima',
-                'country' => 'Peru',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'country' => 'Perú',
+                'timezone' => 'America/Lima'
             ],
             [
-                'name' => 'Aeropuerto Internacional El Dorado',
-                'code' => 'BOG',
+                'name' => 'Aeropuerto El Dorado',
+                'iata_code' => 'BOG',
                 'city' => 'Bogotá',
                 'country' => 'Colombia',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'timezone' => 'America/Bogota'
             ],
             [
-                'name' => 'Aeropuerto Internacional de la Ciudad de México',
-                'code' => 'MEX',
-                'city' => 'Mexico City',
-                'country' => 'Mexico',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'name' => 'Aeropuerto Ezeiza',
+                'iata_code' => 'EZE',
+                'city' => 'Buenos Aires',
+                'country' => 'Argentina',
+                'timezone' => 'America/Argentina/Buenos_Aires'
             ],
+            [
+                'name' => 'Aeropuerto Adolfo Suárez Madrid-Barajas',
+                'iata_code' => 'MAD',
+                'city' => 'Madrid',
+                'country' => 'España',
+                'timezone' => 'Europe/Madrid'
+            ]
         ]);
     }
 }

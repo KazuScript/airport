@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('baggage', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignId('booking_id')->constrained()->cascadeOnDelete();
-
-            $table->integer('quantity');
-            $table->integer('weight_estimated');
-            $table->integer('extra_cost')->default(0);
-
+            $table->foreignId('passenger_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('flight_id')->constrained()->cascadeOnDelete();
+            $table->enum('type', ['hand', 'checked']);
+            $table->decimal('weight', 5, 2);
+            $table->enum('status', ['checked', 'loaded', 'delivered'])->default('checked');
             $table->timestamps();
         });
     }
