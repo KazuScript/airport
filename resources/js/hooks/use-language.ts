@@ -1,27 +1,29 @@
-import { useState, useEffect } from 'react';
-import { es } from '@/i18n/es';
-import { en } from '@/i18n/en';
+import { useEffect, useState } from "react";
+import { translations, Language } from "@/i18n";
 
-const languages = {
-  es,
-  en,
+const getBrowserLanguage = (): Language => {
+  if (typeof navigator === "undefined") return "es";
+  return navigator.language.startsWith("es") ? "es" : "en";
 };
 
-type Language = 'es' | 'en';
-
 export function useLanguage() {
-  const [lang, setLang] = useState<Language>('es');
+  const [language, setLanguage] = useState<Language>("es");
 
   useEffect(() => {
-    const browserLang = navigator.language.startsWith('en') ? 'en' : 'es';
-    setLang(browserLang);
+    const stored = localStorage.getItem("language") as Language | null;
+    setLanguage(stored ?? getBrowserLanguage());
   }, []);
 
-  const t = languages[lang];
-
-  return {
-    lang,
-    setLang,
-    t,
+  const changeLanguage = (lang: Language) => {
+    setLanguage(lang);
+    localStorage.setItem("language", lang);
   };
+
+  const t = (path: string) => {
+    return path
+      .split(".")
+      .reduce<any>((obj, key) => obj?.[key], translations[language]) ?? path;
+  };
+
+  return { language, changeLanguage, t };
 }

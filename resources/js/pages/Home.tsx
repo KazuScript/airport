@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/use-language";
 import MainLayout from "@/layouts/MainLayout";
 import Loader from "@/components/Loader";
 import { useEffect, useState } from "react";
+import "../../css/app.css";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -21,7 +22,6 @@ export default function Home() {
   if (loading) {
     return <Loader />;
   }
-
 
   return (
     <MainLayout>
@@ -49,7 +49,6 @@ export default function Home() {
       <section>
         servicios
       </section>
-
 
     </MainLayout>
   );

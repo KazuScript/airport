@@ -158,23 +158,17 @@ html, body #app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.navbar {
-  padding: 1rem;
-  background: #0f172a;
-  color: white;
-  display: flex;
-  justify-content: space-between;
+  z-index: 50;
 }
 
 .app-content {
   flex: 1;
+  z-index: 0;
 }
 
 .footer {
   padding: 1rem;
-  background: #111827;
+  background: #052F4A;
   color: white;
   text-align: center;
 }
@@ -195,26 +189,11 @@ html, body #app {
   width: 100%;
   background-size: cover;
   background-position: center;
-  position: relative;
 }
 
 .banner-overlay {
   height: 100%;
-  background: rgba(0, 0, 0, 0.45);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   padding: 2rem;
-}
-
-.banner h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-}
-
-.banner p {
-  max-width: 600px;
-  font-size: 1.2rem;
 }
 
 /* Swiper */
@@ -261,7 +240,6 @@ html, body #app {
   object-fit: cover;
 }
 
-
 /* 📱 Mobile first */
 .flight-search input,
 .flight-search button {
@@ -288,8 +266,6 @@ html, body #app {
   from { opacity: 0 }
   to   { opacity: 1 }
 }
-
-
 
 @media (min-width: 768px) {
   .flight-search {
