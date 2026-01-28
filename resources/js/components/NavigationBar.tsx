@@ -3,15 +3,16 @@ import { Bars3Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/20/solid
 import LogoAirport from '../../../public/images/Logo.png';
 
 type navigation = {
-    name: string
-    href?: string
-    children?: { name: string; href: string }[]
+    name: string;
+    href?: string;
+    current?: boolean;
+    children?: { name: string; href: string }[];
 }
 
 const navigation = [
-    { name: 'Check-in', href: '#', current: true },
     {
         name: 'Pasajeros',
+        current: true,
         children: [
             { name: 'Vuelos y Aerolíneas', href: '#' },
             { name: 'Estacionamiento', href: '#' },
@@ -98,10 +99,15 @@ export default function NavigationBar() {
                                     ) : (
                                         <Menu as="div" className="relative" key={item.name}>
                                             <MenuButton
-                                                className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-gray-200 hover:bg-white/5 hover:text-white"
+                                                className={classNames(
+                                                    item.current // Si es true, aplicamos el fondo blanco
+                                                        ? 'bg-white/10 text-white'
+                                                        : 'text-gray-300 hover:bg-white/5 hover:text-white',
+                                                    'inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium'
+                                                )}
                                             >
                                                 {item.name}
-                                                <ChevronDownIcon className="h-4 w-4 opacity-70 transition-transform duration-200 data-[open]:rotate-180" />
+                                                <ChevronDownIcon className="h-4 w-4 opacity-70" />
                                             </MenuButton>
 
                                             <MenuItems className="absolute left-0 mt-2 w-48 origin-top-left rounded-md bg-[#063a5c] shadow-lg ring-1 ring-black/20 focus:outline-none">

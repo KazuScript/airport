@@ -15,13 +15,12 @@ export default function Banner({
 }: BannerProps) {
   return (
     <section
-      className="banner"
       style={{
         backgroundImage: `url(${image})`,
         height,
       }}
     >
-      <div className="banner-overlay">
+      <div>
         {title && <h1>{title}</h1>}
         {subtitle && <p>{subtitle}</p>}
         {children}

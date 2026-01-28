@@ -1,24 +1,35 @@
 import Footer from '@/components/Footer';
-import { useLanguage } from '@/hooks/use-language';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import "../../css/app.css";
 import NavigationBar from '@/components/NavigationBar';
 import LanguageSwitch from '@/components/LanguageSwitch';
+import Loader from '@/components/Loader';
 
 export default function MainLayout({ children }: PropsWithChildren) {
-  /* const { t } = useLanguage(); */
+const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
       <LanguageSwitch />
       <div className="app-layout">
-        
-        <main className="app-content">
+        <header className="relative z-[100]">
           <NavigationBar />
-
+        </header>
+        <main className="app-content">
           {children}
         </main>
-
         <Footer />
       </div>
     </>
