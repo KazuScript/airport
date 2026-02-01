@@ -184,67 +184,54 @@ html, body #app {
   gap: 1rem;
 }
 
-/*Banner*/
-.banner {
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-}
-
-.banner-overlay {
-  height: 100%;
-  padding: 2rem;
-}
-
-/* Swiper */
-.container-carrusel {
-  width: 100%;
-}
-
-.slide {
-  height: 400px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 16px;
-  position: relative;
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.slide-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: white;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #444;
-
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* 📱 Mobile first */
 .flight-search input,
 .flight-search button {
   padding: 0.75rem;
 }
+
+.service-grid {
+  padding: 3rem 1rem;
+}
+
+.service-grid-content {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.service-card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.service-icon {
+  color: #2563eb;
+}
+
+.service-content h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.service-content p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
 
 /* Loader */
 .loader-overlay {

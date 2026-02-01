@@ -1,27 +1,34 @@
 
 import FlightSearchForm from "@/components/FlightSearchForm";
-import { useLanguage } from "@/hooks/use-language";
-import Loader from "@/components/Loader";
-import { useEffect, useState } from "react";
 import "../../css/app.css";
 import MainLayout from "@/layouts/MainLayout";
-import ServiceGrid from "@/components/ServiceGrid";
+import { Plane, Car, PawPrint } from "lucide-react";
+import ServiceGrid from "@/components/Home/ServiceGrid";
+
+const passengerServices = [
+  {
+    name: "Vuelos y Aerolíneas",
+    description: "Consulta vuelos y aerolíneas",
+    icon: <Plane size={32} />,
+  },
+  {
+    name: "Estacionamiento",
+    description: "Tarifas y disponibilidad",
+    icon: <Car size={32} />,
+  },
+  {
+    name: "Traslado de mascotas",
+    description: "Requisitos y asistencia",
+    icon: <PawPrint size={32} />,
+  },
+];
 
 const Home = () => {
-
-  const passengerServices = [
-    { name: 'Vuelos y Aerolíneas' },
-    { name: 'Estacionamiento' },
-    { name: 'Transporte oficial' },
-    { name: 'Objetos perdidos' },
-    { name: 'Traslado de mascotas' },
-  ];
 
   return (
     <section>
       <section className="search-section">
         <FlightSearchForm />
-        <h3>panel de estado del vuelo</h3>
       </section>
       <section>
         <ServiceGrid
@@ -29,6 +36,7 @@ const Home = () => {
           services={passengerServices}
         />
       </section>
+
     </section>
   );
 }
