@@ -7,11 +7,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class FlightResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
         return [
@@ -25,22 +20,21 @@ class FlightResource extends JsonResource
             ],
 
             'origin' => [
-                'code' => $this->origin->code,
-                'name' => $this->origin->name,
-                'city' => $this->origin->city,
+                'code' => $this->originAirport->code,
+                'name' => $this->originAirport->name,
+                'city' => $this->originAirport->city,
             ],
 
             'destination' => [
-                'code' => $this->destination->code,
-                'name' => $this->destination->name,
-                'city' => $this->destination->city,
+                'code' => $this->destinationAirport->code,
+                'name' => $this->destinationAirport->name,
+                'city' => $this->destinationAirport->city,
             ],
 
             'departure_time' => $this->departure_time->toDateTimeString(),
             'arrival_time' => $this->arrival_time->toDateTimeString(),
-
-            'price' => $this->price,
             'status' => $this->status,
         ];
     }
 }
+

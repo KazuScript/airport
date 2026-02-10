@@ -19,6 +19,11 @@ class Flight extends Model
         'control_notes'
     ];
 
+    protected $casts = [
+        'departure_time' => 'datetime',
+        'arrival_time' => 'datetime',
+    ];
+
     public function airline()
     {
         return $this->belongsTo(Airline::class);
