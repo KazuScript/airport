@@ -40,39 +40,20 @@ class FlightController extends Controller
     /**
      * Buscar vuelos con filtros
      */
+
     public function search(FlightSearchRequest $request)
     {
-        $query = Flight::with([
+        $flights = Flight::with([
             'airline',
             'originAirport',
             'destinationAirport',
-        ]);
-
-        // 🔍 Número de vuelo
-        if ($request->filled('flight_number')) {
-            $query->where('flight_number', 'like', '%' . $request->flight_number . '%');
-        }
-
-        // 🌍 Aeropuerto de origen (por código)
-        if ($request->filled('origin')) {
-            $query->whereHas('originAirport', function ($q) use ($request) {
-                $q->where('code', $request->origin);
-            });
-        }
-
-        // 🌎 Aeropuerto de destino (por código)
-        if ($request->filled('destination')) {
-            $query->whereHas('destinationAirport', function ($q) use ($request) {
-                $q->where('code', $request->destination);
-            });
-        }
-
-        // 📅 Fecha de salida
-        if ($request->filled('date')) {
-            $query->whereDate('departure_time', $request->date);
-        }
-
-        $flights = $query->paginate(10);
+        ])
+            ->whereBetween('departure_time', [
+                now()->subHours(3),
+                now()->addHours(12),
+            ])
+            ->orderBy('departure_time')
+            ->paginate(10);
 
         return FlightResource::collection($flights);
     }

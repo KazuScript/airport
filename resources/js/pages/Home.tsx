@@ -27,20 +27,18 @@ const passengerServices = [
 
 const Home = () => {
 
-  const [filters, setFilters] = useState<any>(null);
-  const { flights, loading, error } = useFlights(filters);
+  const [filters, setFilters] = useState({});
+  const { flights, loading } = useFlights(filters);
 
   return (
     <section>
       <section className="search-section">
         <FlightSearchForm onSearch={setFilters} />
-
-        {loading && <p>Cargando vuelos...</p>}
-        {error && <p>{error}</p>}
-
-        {!loading && !error && filters && (
-          <FlightTable flights={flights} loading={loading} />
-        )}
+        <FlightTable
+          flights={flights}
+          loading={loading}
+          type="departures"
+        />
       </section>
       <section>
         <ServiceGrid

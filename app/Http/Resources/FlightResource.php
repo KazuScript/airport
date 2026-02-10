@@ -34,6 +34,7 @@ class FlightResource extends JsonResource
             'departure_time' => $this->departure_time->toDateTimeString(),
             'arrival_time' => $this->arrival_time->toDateTimeString(),
             'status' => $this->status,
+            'gate' => $this->gate,
         ];
     }
 }
