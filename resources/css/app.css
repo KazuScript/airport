@@ -179,16 +179,16 @@ html, body #app {
   margin-bottom: 2rem;
 }
 
-.flight-search {
-  display: grid;
-  gap: 1rem;
+/* 📱 Mobile first */
+
+
+/*search-section*/
+.search-section {
+  padding: 2rem 3rem;
 }
 
-/* 📱 Mobile first */
-.flight-search input,
-.flight-search button {
-  padding: 0.75rem;
-}
+
+
 
 .service-grid {
   padding: 3rem 1rem;
@@ -274,11 +274,6 @@ html, body #app {
 }
 
 @media (min-width: 768px) {
-  .flight-search {
-    grid-template-columns: repeat(4, 1fr);
-    align-items: end;
-  }
-
   .hero {
     text-align: left;
   }

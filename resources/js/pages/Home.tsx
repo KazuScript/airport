@@ -40,6 +40,8 @@ const Home = () => {
           type="departures"
         />
       </section>
+
+      
       <section>
         <ServiceGrid
           title="Servicios para pasajeros"
